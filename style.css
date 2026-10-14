@@ -135,6 +135,26 @@ h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; margin: 0 0 14px; fo
 .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .pills span { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 14px; font-weight: 700; }
 
+/* feature rows: one idea per row, visuals in identical frames */
+.frows { display: flex; flex-direction: column; gap: 90px; margin-top: 56px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.frow.flip .ftext { order: 2; }
+.ftext { max-width: 440px; }
+.frow.flip .ftext { justify-self: end; }
+.ficon { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: color-mix(in srgb, var(--mustard) 18%, transparent); font-size: 26px; margin-bottom: 18px; }
+.ftext h3 { font-size: clamp(26px, 3.2vw, 36px); line-height: 1.12; margin: 0 0 12px; font-weight: 900; letter-spacing: -.3px; }
+.ftext p { margin: 0; color: var(--muted); font-size: 19px; }
+.visual { aspect-ratio: 1 / 1; border-radius: 36px; background: var(--bg2); border: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; position: relative; }
+.visual img { width: auto; height: auto; max-width: 74%; max-height: 82%; border-radius: 22px; box-shadow: 0 24px 50px rgba(47, 30, 16, .18); border: 1px solid var(--line); }
+.visual.dark { background: var(--night); border-color: transparent; align-content: center; gap: 22px; }
+.visual img.pix { width: 46%; max-width: 46%; border: 0; border-radius: 0; box-shadow: none; image-rendering: pixelated; }
+.visual .quote { color: var(--cream); background: rgba(242,232,212,.08); border: 1px solid rgba(242,232,212,.16); border-radius: 16px; padding: 10px 16px; font-weight: 700; font-size: 16px; }
+.extras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 90px; }
+.extra { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+.extra .ficon { width: 44px; height: 44px; font-size: 22px; margin-bottom: 12px; border-radius: 13px; }
+.extra b { display: block; font-size: 17px; margin-bottom: 4px; }
+.extra span:last-child { color: var(--muted); font-size: 15px; }
+
 /* gallery */
 .shots { display: flex; gap: 18px; overflow-x: auto; padding: 6px 20px 26px; margin: 0 -20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .shots::-webkit-scrollbar { display: none; }
@@ -214,6 +234,10 @@ a.app:hover { transform: translateY(-3px); }
   .hero { grid-template-columns: 1fr; gap: 50px; padding-top: 16px; }
   .stage { max-width: 440px; margin: 0 auto; width: 100%; }
   .bento { grid-template-columns: 1fr; }
+  .frows { gap: 56px; margin-top: 36px; }
+  .frow { grid-template-columns: 1fr; gap: 26px; }
+  .frow.flip .ftext { order: 0; justify-self: start; }
+  .extras { grid-template-columns: 1fr 1fr; margin-top: 56px; }
   .t-wide, .t-narrow, .t-half { grid-column: auto; }
   .t-wide { flex-direction: column; }
   .t-wide .txt { padding-bottom: 18px; }
