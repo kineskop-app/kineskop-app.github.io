@@ -6,6 +6,8 @@ Static site of the Kineskop studio (no build step): `/` studio page, `/sweaterca
 https://kineskop-app.github.io/ (Settings → Pages → Deploy from branch → main / root).
 
 Before publishing replace:
-- `#notify` links in sweatercat/index.html and sweatercat/uk/index.html with a Tally/Formspree form URL (or remove the buttons).
 
 App Store Connect URLs: Privacy — https://kineskop-app.github.io/sweatercat/privacy.html, Support — https://kineskop-app.github.io/sweatercat/support.html
+
+Notify-me form posts to FormSubmit (https://formsubmit.co) → kineskop.app@gmail.com; the very first submission sends an
+activation email that has to be confirmed once.

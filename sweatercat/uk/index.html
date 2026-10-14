@@ -25,7 +25,7 @@
       <h1>Кіт, який допомагає зосередитись</h1>
       <p class="lead">Затишний помодоро-таймер із піксельним котом у светрі. Фокусуйтесь разом, заробляй біти, облаштовуй вінтажну квартиру — і повертай собі час, який забирає телефон.</p>
       <div class="cta">
-        <a class="btn" href="#notify">Повідомити мене</a>
+        <a class="btn" href="#notify-form">Повідомити мене</a>
         <span class="soon">Скоро в App Store</span>
       </div>
     </div>
@@ -43,10 +43,18 @@
     <div class="shots"><img src="../img/uk_1.jpg" alt="" loading="lazy"><img src="../img/uk_2.jpg" alt="" loading="lazy"><img src="../img/uk_3.jpg" alt="" loading="lazy"><img src="../img/uk_4.jpg" alt="" loading="lazy"><img src="../img/uk_5.jpg" alt="" loading="lazy"><img src="../img/uk_6.jpg" alt="" loading="lazy"></div>
   </section>
 
-  <section id="notify">
+  <section id="notify-form">
     <div class="notify">
       <div><h2>Дізнайся першим</h2><p>Sweater Cat майже готовий. Тисни нижче — і ми повідомимо в день запуску.</p></div>
-      <a class="btn" href="#notify">Повідомити мене</a>
+      <form class="signup" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST">
+        <input type="email" name="email" placeholder="твоя@пошта.com" required autocomplete="email">
+        <input type="hidden" name="_subject" value="Sweater Cat — повідомити (uk)">
+        <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/uk/thanks.html">
+        <input type="hidden" name="_template" value="box">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn" type="submit">Повідомити мене</button>
+        <small>Лише один лист у день запуску. Без спаму.</small>
+      </form>
     </div>
   </section>
 

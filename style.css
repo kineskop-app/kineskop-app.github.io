@@ -86,3 +86,12 @@ a.app:hover { transform: translateY(-3px); }
 .app.soon { border-style: dashed; opacity: .75; }
 .app.soon .ph { width: 84px; height: 84px; border-radius: 20px; border: 2px dashed var(--line); display: grid; place-items: center; font-size: 30px; flex: 0 0 auto; }
 @media (max-width: 760px) { .apps { grid-template-columns: 1fr; } }
+
+/* notify form */
+.signup { display: grid; grid-template-columns: 1fr auto; gap: 10px; min-width: min(420px, 100%); }
+.signup input[type=email] { font: inherit; padding: 13px 18px; border-radius: 999px; border: 2px solid rgba(242,232,212,.25); background: rgba(242,232,212,.08); color: var(--cream); outline: none; min-width: 0; }
+.signup input[type=email]::placeholder { color: rgba(242,232,212,.5); }
+.signup input[type=email]:focus { border-color: var(--mustard); }
+.signup button { border: 0; cursor: pointer; font: inherit; font-weight: 800; }
+.signup small { grid-column: 1 / -1; color: rgba(242,232,212,.6); }
+@media (max-width: 760px) { .signup { grid-template-columns: 1fr; } }

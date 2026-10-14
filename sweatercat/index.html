@@ -25,7 +25,7 @@
       <h1>A cat that helps you focus</h1>
       <p class="lead">A cozy pomodoro timer with a pixel cat in a sweater. Focus together, earn bits, furnish a vintage flat — and get your time back from your phone.</p>
       <div class="cta">
-        <a class="btn" href="#notify">Get notified</a>
+        <a class="btn" href="#notify-form">Get notified</a>
         <span class="soon">Coming soon to the App Store</span>
       </div>
     </div>
@@ -43,10 +43,18 @@
     <div class="shots"><img src="img/en_1.jpg" alt="" loading="lazy"><img src="img/en_2.jpg" alt="" loading="lazy"><img src="img/en_3.jpg" alt="" loading="lazy"><img src="img/en_4.jpg" alt="" loading="lazy"><img src="img/en_5.jpg" alt="" loading="lazy"><img src="img/en_6.jpg" alt="" loading="lazy"></div>
   </section>
 
-  <section id="notify">
+  <section id="notify-form">
     <div class="notify">
       <div><h2>Be first to know</h2><p>Sweater Cat is almost ready. Tap below and we'll tell you the day it's out.</p></div>
-      <a class="btn" href="#notify">Get notified</a>
+      <form class="signup" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST">
+        <input type="email" name="email" placeholder="your@email.com" required autocomplete="email">
+        <input type="hidden" name="_subject" value="Sweater Cat — notify me">
+        <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/thanks.html">
+        <input type="hidden" name="_template" value="box">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <button class="btn" type="submit">Notify me</button>
+        <small>Just one email on launch day. No spam.</small>
+      </form>
     </div>
   </section>
 
