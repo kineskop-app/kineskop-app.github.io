@@ -44,17 +44,27 @@
   </section>
 
   <section id="notify-form">
-    <div class="notify">
-      <div><h2>Дізнайся першим</h2><p>Sweater Cat майже готовий. Тисни нижче — і ми повідомимо в день запуску.</p></div>
-      <form class="signup" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST">
-        <input type="email" name="email" placeholder="твоя@пошта.com" required autocomplete="email">
-        <input type="hidden" name="_subject" value="Sweater Cat — повідомити (uk)">
-        <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/uk/thanks.html">
-        <input type="hidden" name="_template" value="box">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <button class="btn" type="submit">Повідомити мене</button>
-        <small>Лише один лист у день запуску. Без спаму.</small>
-      </form>
+    <div class="notify2">
+      <div class="cat-says">
+        <img src="../../sweatercat/img/icon.png" alt="">
+        <div class="bubble">Залиш пошту — я нявкну в день запуску.</div>
+      </div>
+      <div class="notify-body">
+        <h2>Дізнайся першим</h2>
+        <form class="signup2" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST" data-ok="Мрр! Ти в списку 🐾" data-oksub="Напишемо один раз — у день, коли Sweater Cat вийде." data-err="Хм, не вийшло. Спробуєш ще раз?">
+          <div class="pill">
+            <input type="email" name="email" placeholder="твоя@пошта.com" required autocomplete="email" aria-label="Email">
+            <button type="submit">Повідомити</button>
+          </div>
+          <input type="hidden" name="_subject" value="Sweater Cat — повідомити (uk)">
+          <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/uk/thanks.html">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+          <small>Один лист у день запуску. Жодного спаму.</small>
+        </form>
+        <div class="done" hidden><b></b><span></span></div>
+      </div>
     </div>
   </section>
 
@@ -63,5 +73,6 @@
     <span><a href="../privacy.html">Конфіденційність</a> · <a href="../support.html">Підтримка</a></span>
   </footer>
 </div>
+<script src="../../signup.js"></script>
 </body>
 </html>

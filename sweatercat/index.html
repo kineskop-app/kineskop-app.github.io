@@ -44,17 +44,27 @@
   </section>
 
   <section id="notify-form">
-    <div class="notify">
-      <div><h2>Be first to know</h2><p>Sweater Cat is almost ready. Tap below and we'll tell you the day it's out.</p></div>
-      <form class="signup" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST">
-        <input type="email" name="email" placeholder="your@email.com" required autocomplete="email">
-        <input type="hidden" name="_subject" value="Sweater Cat — notify me">
-        <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/thanks.html">
-        <input type="hidden" name="_template" value="box">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <button class="btn" type="submit">Notify me</button>
-        <small>Just one email on launch day. No spam.</small>
-      </form>
+    <div class="notify2">
+      <div class="cat-says">
+        <img src="../sweatercat/img/icon.png" alt="">
+        <div class="bubble">Leave your email — I'll meow on launch day.</div>
+      </div>
+      <div class="notify-body">
+        <h2>Be first to know</h2>
+        <form class="signup2" action="https://formsubmit.co/kineskop.app@gmail.com" method="POST" data-ok="Mrr! You're on the list 🐾" data-oksub="We'll write once — the day Sweater Cat is out." data-err="Hmm, that didn't go through. Try again?">
+          <div class="pill">
+            <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email">
+            <button type="submit">Notify me</button>
+          </div>
+          <input type="hidden" name="_subject" value="Sweater Cat — notify me">
+          <input type="hidden" name="_next" value="https://kineskop-app.github.io/sweatercat/thanks.html">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+          <small>One email when we launch. No spam, ever.</small>
+        </form>
+        <div class="done" hidden><b></b><span></span></div>
+      </div>
     </div>
   </section>
 
@@ -63,5 +73,6 @@
     <span><a href="privacy.html">Privacy</a> · <a href="support.html">Support</a></span>
   </footer>
 </div>
+<script src="../signup.js"></script>
 </body>
 </html>
