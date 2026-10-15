@@ -30,12 +30,14 @@
         });
         if (!r.ok) throw new Error(String(r.status));
         document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined"));
-        try { localStorage.setItem("sc-joined", "1"); } catch {}
+        try { localStorage.setItem(form.dataset.key || "sc-joined", "1"); } catch {}
       } catch {
         btn.classList.remove("busy");
         note.textContent = form.dataset.err; note.classList.add("err");
       }
     });
   });
-  try { if (localStorage.getItem("sc-joined")) document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined")); } catch {}
+  // each landing remembers its own list ("sc-joined" for Sweater Cat, data-key on the form for others)
+  const key = document.querySelector("form.signup")?.dataset.key || "sc-joined";
+  try { if (localStorage.getItem(key)) document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined")); } catch {}
 })();

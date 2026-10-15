@@ -226,6 +226,8 @@ a.app:hover { transform: translateY(-3px); }
 .app span { color: var(--muted); display: block; }
 .app .tag { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 800; color: #2f2a28; background: var(--mustard); padding: 3px 10px; border-radius: 999px; }
 .app.soon { border-style: dashed; opacity: .75; }
+.apps.three { grid-template-columns: repeat(3, 1fr); }
+.apps.three .app { flex-direction: column; align-items: flex-start; }
 .app.soon .ph { width: 84px; height: 84px; border-radius: 20px; border: 2px dashed var(--line); display: grid; place-items: center; font-size: 30px; flex: 0 0 auto; }
 
 /* ---------- responsive ---------- */
@@ -248,7 +250,8 @@ a.app:hover { transform: translateY(-3px); }
   .final { grid-template-columns: 1fr; padding: 32px 22px; text-align: center; }
   .final .signup, .final .done { margin: 0 auto; }
   .cat-says { width: auto; }
-  .apps { grid-template-columns: 1fr; }
+  .apps, .apps.three { grid-template-columns: 1fr; }
+  .apps.three .app { flex-direction: row; align-items: center; }
 }
 @media (max-width: 520px) {
   body { font-size: 16px; }
