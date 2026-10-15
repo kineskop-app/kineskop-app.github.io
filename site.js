@@ -26,7 +26,8 @@
         const r = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ email: data.email, _subject: data._subject, _template: "box" }),
+          // every visible field (email, and e.g. the platform on Last Run) plus the subject
+          body: JSON.stringify({ ...Object.fromEntries(Object.entries(data).filter(([k]) => !k.startsWith("_"))), _subject: data._subject, _template: "box" }),
         });
         if (!r.ok) throw new Error(String(r.status));
         document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined"));

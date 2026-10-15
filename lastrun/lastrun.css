@@ -52,6 +52,16 @@ body.lr {
 .store img.gp { height: 63px; margin: -10px -9px; }
 .store small { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); padding: 3px 7px; border-radius: 2px; white-space: nowrap; }
 
+/* signup: pick a platform first, so each person gets exactly one email */
+.platform { border: 0; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.platform legend { float: left; margin-right: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.platform label { position: relative; cursor: pointer; }
+.platform input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.platform span { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--card); transition: border-color .15s, background .15s, color .15s; }
+.platform input:checked + span { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+.platform input:checked + span::before { content: "■ "; font-size: 10px; vertical-align: 1px; }
+.platform input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+
 /* signup */
 .lr .pill { border-radius: 2px; background: var(--card); }
 .lr .pill input { font-family: var(--mono); font-size: 15px; }
@@ -70,6 +80,7 @@ body.lr {
 .lr .fnum::after { content: ""; display: inline-block; width: 46px; height: 1px; background: var(--accent); vertical-align: middle; margin-left: 12px; opacity: .6; }
 .lr .ftext h3 { text-transform: uppercase; font-weight: 800; letter-spacing: -.3px; font-size: clamp(22px, 2.8vw, 32px); }
 .lr .visual { aspect-ratio: 1 / 1; border-radius: 4px; background: radial-gradient(circle at 50% 40%, #1b2444, #07080f 75%); border: 1px solid var(--line); }
+.lr .visual img, .lr .shots img { height: auto; }
 .lr .visual img { max-width: 64%; max-height: 88%; border-radius: 2px; border: 6px solid #000; box-shadow: 0 30px 60px rgba(0,0,0,.6), 0 0 0 1px #2b3760; }
 .lr .visual::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(0,0,0,.12) 0 1px, transparent 1px 3px); }
 
@@ -101,7 +112,7 @@ body.lr {
 
 @media (max-width: 900px) {
   .lr .phone { width: min(78%, 300px); }
-  .lr .final .stores { justify-content: center; }
+  .lr .final .stores, .lr .final .platform { justify-content: center; }
   .lr .ticket { margin: 0 auto; width: 120px; height: 120px; }
 }
 @media (max-width: 520px) {
