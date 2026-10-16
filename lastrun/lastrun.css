@@ -33,65 +33,74 @@ body.lr {
 .lr .lang a { border-radius: 2px; }
 .lr :focus-visible { border-radius: 2px; }
 
-/* one-screen landing: icon, one line, notify form. Gameplay video glows behind (phone) or stands beside (desktop). */
-body.lr.one { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: max(20px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); overflow-x: hidden; }
+/* one-screen landing. Hierarchy: headline → form → everything else whispers.
+   Amber is reserved for the headline accent and the one button. */
+body.lr.one { min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 400px); place-content: center; align-items: center; padding: max(24px, env(safe-area-inset-top)) 20px max(16px, env(safe-area-inset-bottom)); overflow-x: hidden; }
 .one .phone { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: #000; }
 .one .phone video { width: 100%; height: 100%; object-fit: cover; opacity: .38; filter: blur(3px) saturate(.9); transform: scale(1.04); }
 .one .phone::after { content: ""; position: absolute; inset: 0; background:
-    linear-gradient(180deg, rgba(7,8,15,.55), rgba(7,8,15,.25) 35%, rgba(7,8,15,.85) 75%, #07080f),
+    linear-gradient(180deg, rgba(7,8,15,.92), rgba(7,8,15,.35) 30%, rgba(7,8,15,.35) 45%, rgba(7,8,15,.88) 72%, #07080f),
     repeating-linear-gradient(to bottom, rgba(0,0,0,.18) 0 1px, transparent 1px 3px); }
-.one .card { position: relative; width: 100%; max-width: 440px; text-align: center; }
-.one .lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px; z-index: 2; }
-.one .lang a { font-size: 12px; padding: 5px 10px; background: rgba(7,8,15,.6); }
-.one .icon { display: block; width: 84px; height: 84px; margin: 0 auto 10px; border-radius: 20px; image-rendering: pixelated; box-shadow: 0 0 0 1px #2b3760, 0 0 60px rgba(244, 176, 74, .3); }
-.one .name { margin: 0 0 6px; font-family: var(--mono); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
-.one h1 { margin: 0 0 12px; font-family: var(--mono); font-weight: 800; text-transform: uppercase; letter-spacing: -1px; font-size: clamp(28px, 8.4vw, 46px); line-height: 1.05; }
-.one h1 em { font-style: normal; color: var(--accent); text-shadow: 0 0 28px rgba(244, 176, 74, .45); }
-.one .lead { margin: 0 auto 20px; max-width: 34ch; color: var(--muted); font-size: 16px; line-height: 1.45; }
-.one .signup, .one .done { margin: 0 auto; }
-.one .platform { justify-content: center; }
-.one .platform legend { float: none; width: 100%; margin: 0 0 8px; }
-.one .signup .note { margin: 10px 0 0; font-size: 13px; }
-.one .stores { justify-content: center; margin: 22px 0 0; gap: 10px 16px; }
-.one .store img.as { height: 34px; }
-.one .store img.gp { height: 51px; margin: -8px -8px; }
-.one .store small { font-size: 10px; padding: 2px 6px; }
-.one footer { margin: 22px 0 0; padding: 0; border: 0; justify-content: center; gap: 6px 14px; font-size: 13px; }
+.one .card { position: relative; width: 100%; max-width: 400px; text-align: center; }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.one .lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 16px; z-index: 2; }
+.one .lang a { border: 0; padding: 4px 0; background: none; font-size: 12px; letter-spacing: 1px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+
+.one .lockup { display: inline-flex; align-items: center; gap: 12px; margin: 0 0 36px; font-family: var(--mono); font-size: 14px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; }
+.one .icon { width: 44px; height: 44px; border-radius: 11px; image-rendering: pixelated; box-shadow: 0 0 0 1px #2b3760, 0 0 40px rgba(244, 176, 74, .25); }
+.one .kick { margin: 0 0 12px; font-family: var(--mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.one h1 { margin: 0 0 14px; font-family: var(--mono); font-weight: 800; text-transform: uppercase; letter-spacing: -1px; font-size: clamp(30px, 9vw, 44px); line-height: 1.04; }
+.one h1 em { font-style: normal; color: var(--accent); }
+.one .lead { margin: 0 auto 32px; color: var(--muted); font-size: 17px; line-height: 1.45; }
+
+/* form: segmented platform switch + email field, same width, one block */
+.one .signup, .one .done { margin: 0 auto; max-width: none; }
+.one .platform { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0 0 10px; padding: 3px; border: 1px solid var(--line); border-radius: 3px; background: rgba(16, 21, 42, .7); }
+.one .platform label { display: block; }
+.one .platform label + label span { box-shadow: inset 1px 0 0 var(--line); }
+.one .platform input:checked + span, .one .platform label + label input:checked + span { box-shadow: none; }
+.one .platform span { display: block; text-align: center; border: 0; background: none; padding: 10px 0; font-size: 15px; color: var(--muted); border-radius: 2px; }
+.one .platform input:checked + span { background: #1b2444; color: var(--ink); }
+.one .platform input:checked + span::before { content: "● "; color: var(--accent); font-size: 10px; vertical-align: 2px; }
+.one .pill { border-width: 1px; }
+.one .pill input { font-family: inherit; font-size: 16px; padding: 12px 14px; }
+.one .pill .btn { padding: 12px 20px; font-size: 15px; }
+.one .signup .note { margin: 12px 0 0; font-size: 13px; color: var(--muted); opacity: .8; }
+
+.one footer { margin: 40px 0 0; padding: 0; border: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 12px; opacity: .7; }
+.one footer span { display: block; }
+.one .stores { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 0; filter: grayscale(1); opacity: .75; }
+.one .stores img.as { height: 30px; }
+.one .stores img.gp { height: 45px; margin: -7px -7px; }
+
 @media (min-width: 900px) {
-  body.lr.one { grid-template-columns: minmax(0, 440px) 300px; gap: 80px; place-content: center; }
+  body.lr.one { grid-template-columns: 400px 300px; gap: 100px; place-content: center; }
   .one .card { text-align: left; }
-  .one .icon { margin: 0 0 12px; }
   .one .lead { margin-left: 0; }
-  .one .signup, .one .done { margin: 0; }
-  .one .platform, .one .stores, .one footer { justify-content: flex-start; }
-  .one .platform legend { float: left; width: auto; margin: 0 6px 0 0; }
+  .one footer { align-items: flex-start; }
+  .one .stores { justify-content: flex-start; }
   .one .phone { position: relative; inset: auto; z-index: 0; order: 2; width: 300px; aspect-ratio: 540 / 1170; border: 10px solid #1b2444; border-radius: 46px; box-shadow: var(--shadow), 0 0 0 1px #2b3760, 0 0 120px rgba(244, 176, 74, .14); }
-  .one .phone video { opacity: 1; filter: none; }
+  .one .phone video { opacity: 1; filter: none; transform: none; }
   .one .phone::after { background: repeating-linear-gradient(to bottom, rgba(0,0,0,.16) 0 1px, transparent 1px 3px); }
-  .one .lang { position: absolute; top: 0; right: 0; }
+  .one .lang { position: fixed; top: 24px; right: 32px; }
 }
-@media (max-height: 640px) and (max-width: 899px) {
-  .one .icon { width: 64px; height: 64px; border-radius: 16px; }
-  .one .lead { margin-bottom: 14px; font-size: 15px; }
-  .one .stores { margin-top: 14px; }
+@media (max-height: 680px) and (max-width: 899px) {
+  .one .lockup { margin-bottom: 22px; }
+  .one .lead { margin-bottom: 22px; }
+  .one footer { margin-top: 26px; }
 }
 
-/* store badges (official artwork, only scaled; Google's PNG carries its own clear space) */
-.stores { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin: 0 0 26px; }
-.store { display: inline-flex; align-items: center; gap: 10px; }
-.store img { width: auto; opacity: .9; }
-.store img.as { height: 42px; }
-.store img.gp { height: 63px; margin: -10px -9px; }
-.store small { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent); padding: 3px 7px; border-radius: 2px; white-space: nowrap; }
+/* store badges on the docs pages */
+.stores { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.store img.as, .stores img.as { height: 42px; }
+.store img.gp, .stores img.gp { height: 63px; margin: -10px -9px; }
 
-/* signup: pick a platform first, so each person gets exactly one email */
-.platform { border: 0; margin: 0 0 12px; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
-.platform legend { float: left; margin-right: 6px; font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+/* platform switch (docs/other pages fall back to these) */
+.platform { border: 0; margin: 0 0 12px; padding: 0; }
 .platform label { position: relative; cursor: pointer; }
 .platform input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-.platform span { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--card); transition: border-color .15s, background .15s, color .15s; }
-.platform input:checked + span { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
-.platform input:checked + span::before { content: "■ "; font-size: 10px; vertical-align: 1px; }
+.platform span { display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 14px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 2px; color: var(--ink); background: var(--card); transition: background .15s, color .15s; }
 .platform input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 /* signup */
