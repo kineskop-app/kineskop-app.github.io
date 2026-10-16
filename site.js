@@ -29,7 +29,9 @@
           // every visible field (email, and e.g. the platform on Last Run) plus the subject
           body: JSON.stringify({ ...Object.fromEntries(Object.entries(data).filter(([k]) => !k.startsWith("_"))), _subject: data._subject, _template: "box" }),
         });
-        if (!r.ok) throw new Error(String(r.status));
+        // FormSubmit answers 200 even when it did not deliver (e.g. the form still needs activation), so check the body too
+        const res = await r.json().catch(() => ({}));
+        if (!r.ok || String(res.success) !== "true") throw new Error(res.message || String(r.status));
         document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined"));
         try { localStorage.setItem(form.dataset.key || "sc-joined", "1"); } catch {}
       } catch {
