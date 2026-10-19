@@ -1,0 +1,41 @@
+/* Sweater Cat — one-screen landing on top of the shared style.css. Visitors come from Instagram and already know the cat:
+   room window, name, one line, email. Mustard is reserved for the headline accent and the one button. Scoped to body.sc.one. */
+body.sc.one {
+  min-height: 100vh; min-height: 100svh; display: grid; grid-template-columns: minmax(0, 380px);
+  place-content: center; justify-items: center; gap: 28px;
+  padding: max(56px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+  background: radial-gradient(700px 480px at 50% 0%, color-mix(in srgb, var(--mustard) 14%, transparent), transparent 70%), var(--bg);
+}
+.sc.one .lang { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 16px; z-index: 2; }
+.sc.one .lang a { border: 0; padding: 4px 0; background: none; font-size: 13px; font-weight: 700; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+
+.sc.one .window { width: min(100%, 300px); aspect-ratio: 720 / 776; border-radius: 30px; border-width: 8px; }
+.sc.one .card { width: 100%; text-align: center; }
+.sc.one .lockup { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; font-weight: 900; font-size: 17px; }
+.sc.one .icon { width: 32px; height: 32px; border-radius: 9px; image-rendering: pixelated; }
+.sc.one h1 { margin: 0 0 10px; font-weight: 900; letter-spacing: -.8px; font-size: clamp(30px, 8.6vw, 44px); line-height: 1.05; }
+.sc.one h1 em { font-style: normal; color: var(--accent); }
+.sc.one .lead { margin: 0 auto 24px; font-size: 17px; line-height: 1.45; max-width: 30ch; }
+
+.sc.one .signup, .sc.one .done { margin: 0 auto; max-width: none; }
+.sc.one .pill input { font-size: 16px; padding: 11px 14px; }
+.sc.one .pill .btn { padding: 12px 20px; font-size: 16px; }
+.sc.one .signup .note { margin: 10px 0 0; font-size: 13px; }
+
+.sc.one footer { margin: 32px 0 0; padding: 0; border: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.sc.one footer a { color: inherit; }
+.sc.one .kick { font-weight: 800; letter-spacing: .4px; }
+
+@media (min-width: 900px) {
+  body.sc.one { grid-template-columns: 380px 380px; gap: 80px; align-items: center; }
+  .sc.one .window { order: 2; width: 380px; box-shadow: var(--shadow); }
+  .sc.one .card { text-align: left; }
+  .sc.one .lead { margin-left: 0; }
+  .sc.one footer { align-items: flex-start; }
+  .sc.one .lang { top: 24px; right: 32px; }
+}
+@media (max-height: 760px) and (max-width: 899px) {
+  body.sc.one { gap: 20px; padding-top: max(44px, env(safe-area-inset-top)); }
+  .sc.one .window { width: min(100%, 220px); border-radius: 24px; border-width: 6px; }
+  .sc.one footer { margin-top: 22px; }
+}
