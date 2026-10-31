@@ -20,6 +20,10 @@ body.sc.one {
 .sc.one .get { display: inline-block; border-radius: 14px; transition: transform .12s ease; -webkit-tap-highlight-color: transparent; }
 .sc.one .get:active { transform: scale(.96); }
 .sc.one .get img { display: block; width: 200px; height: auto; }
+.sc.one .inapp { margin: 18px auto 0; padding: 14px 16px; max-width: 320px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-align: center; }
+.sc.one .inapp[hidden] { display: none; }
+.sc.one .inapp p { margin: 0 0 12px; font-size: 15px; font-weight: 700; }
+.sc.one .inapp small { display: block; margin: 12px 0 0; font-size: 13px; color: var(--muted); }
 .sc.one .free { margin: 10px 0 0; font-size: 14px; font-weight: 700; color: var(--muted); }
 
 .sc.one footer { margin: 28px 0 0; padding: 0; border: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }

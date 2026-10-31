@@ -40,6 +40,17 @@
       }
     });
   });
+  // TikTok/Instagram/Facebook in-app browsers swallow App Store links: try the itms-apps scheme instead and offer Safari
+  // (x-safari-https, iOS 17+) plus the "••• → Open in browser" hint
+  if (/BytedanceWebview|musical_ly|TikTok|Instagram|FBAN|FBAV/i.test(navigator.userAgent)) {
+    document.querySelectorAll("a.get").forEach((a) => { a.href = a.href.replace(/^https:/, "itms-apps:"); });
+    document.querySelectorAll(".inapp").forEach((box) => {
+      const s = box.querySelector("a.safari");
+      if (s) s.href = s.getAttribute("href") + location.search;
+      box.hidden = false;
+    });
+  }
+
   // each landing remembers its own list ("sc-joined" for Sweater Cat, data-key on the form for others)
   const key = document.querySelector("form.signup")?.dataset.key || "sc-joined";
   try { if (localStorage.getItem(key)) document.querySelectorAll(".signup-wrap").forEach((w) => w.classList.add("joined")); } catch {}
