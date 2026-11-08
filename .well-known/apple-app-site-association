@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["U2UAEHHU5C.com.kineskop.sweatercat"],
+        "components": [{ "/": "/sweatercat/f/*", "comment": "Focus together invites" }]
+      }
+    ]
+  }
+}
