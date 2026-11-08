@@ -25,9 +25,10 @@
   <h1 data-uk="Фокусуємось <em>разом</em>?">Focus <em>together</em>?</h1>
   <p class="lead" data-uk="Друг кличе твого кота в гості: ви фокусуєтеся одночасно, а коти працюють поруч.">A friend invited your cat over: you focus at the same time, and the cats work side by side.</p>
   <p class="lead"><span data-uk="Код:">Code:</span> <b id="code" style="font-family:ui-monospace,monospace;letter-spacing:.12em">——————</b></p>
+  <a class="btn" id="open" href="sweatercat://f" data-goatcounter-click="open-together" data-uk="Відкрити в Sweater Cat">Open in Sweater Cat</a>
   <a class="get" href="https://apps.apple.com/app/id6823695284" data-goatcounter-click="appstore-together" data-goatcounter-title="App Store (together)">
     <img src="../img/appstore.svg" alt="Download on the App Store" width="180" height="60"></a>
-  <p class="free" data-uk="Встанови, тоді відкрий це посилання ще раз — або введи код у застосунку (кнопка з двома котами).">Install, then open this link again — or enter the code in the app (the two-cats button).</p>
+  <p class="free" data-uk="Ще немає застосунку? Встанови, тоді натисни «Відкрити» — або введи код у застосунку (кнопка з двома котами).">No app yet? Install it, then tap Open — or enter the code in the app (the two-cats button).</p>
   <footer>
     <span>by <a href="../../">Kineskop</a> · <a href="../privacy.html">Privacy</a> · <a href="../support.html">Support</a></span>
   </footer>
@@ -35,7 +36,10 @@
 <script>
   // the code from ?c=, only the app's alphabet
   var c = (new URLSearchParams(location.search).get("c") || "").toUpperCase().replace(/[^2-9A-HJKMNP-Z]/g, "").slice(0, 6);
-  if (c.length === 6) document.getElementById("code").textContent = c;
+  if (c.length === 6) {
+    document.getElementById("code").textContent = c;
+    document.getElementById("open").href = "sweatercat://f?c=" + c;
+  }
   if ((navigator.language || "").toLowerCase().indexOf("uk") === 0) {
     document.documentElement.lang = "uk";
     document.querySelectorAll("[data-uk]").forEach(function (e) { e.innerHTML = e.getAttribute("data-uk"); });
